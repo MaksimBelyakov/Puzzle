@@ -7,16 +7,17 @@ function trySwap(newItems, position, t){
 }
 
 function arraysEqual(a, b){
-    for(let i = 0; i < a.lenth; i++){
+    for(let i = 0; i < a.length; i++){
         if (a[i] !== b[i]) {
-            return false;
+            return false
         }
     }
 
-    return true;
+    return true
 }
 
 const CORRECT = ['1', '2', '3', '4', '5', '6', '7', '8', null]
+
 function reducer(state, action){
     switch (action.type){
         case 'move': {
@@ -49,8 +50,8 @@ function reducer(state, action){
 
         case 'shuffle': {
             let newState = { ...state }
-            do{
-                for (let i = 0;i<300; i++) {
+            do {
+                for (let i = 0; i < 300; i++) {
                     newState = reducer(
                         { ...newState },
                         {
@@ -59,13 +60,13 @@ function reducer(state, action){
                         }
                     )
                 }
-            } while ( newState.complete )
+            } while (newState.complete)
             return newState
         }
         case 'reset': {
             return {
                 ...state,
-                items: [CORRECT],
+                items: [...CORRECT],
                 complete: true,
             }
         }
@@ -76,4 +77,4 @@ function reducer(state, action){
 }
 
 
-export default reducer;
+export default reducer
